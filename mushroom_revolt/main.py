@@ -79,7 +79,7 @@ class Hero:
         self.state = 'idle'  # idle, run, jump
         self.anim_timer = 0
         self.anim_index = 0
-        self.direction = 1  # 1: direita, -1: esquerda
+        self.direction = 1  # 1: right, -1: left
         self.sprites = {
             'idle': ['hero_idle_1', 'hero_idle_2', 'hero_idle_3'],
             'run': ['hero_run_1', 'hero_run_2', 'hero_run_3'],
@@ -103,7 +103,7 @@ class Hero:
             self.vx = 4
             self.direction = 1
 
-        # Estado de movimento
+        # Movement state
         if self.vx != 0 and self.on_ground:
             self.state = 'run'
         elif self.on_ground:
@@ -128,7 +128,7 @@ class Hero:
                 if self.state == 'jump':
                     self.state = 'idle'
 
-        # Animação
+        # Animation
         self.anim_timer += 1
         if self.state == 'idle':
             if self.anim_timer > 10:
@@ -144,6 +144,15 @@ class Hero:
                 ) % len(self.sprites['run'])
         else:  # jump
             self.anim_index = 0
+
+        if self.x < 0: # Limites da tela
+            self.x = 0
+        if self.x > WIDTH - 32:
+            self.x = WIDTH - 32
+        if self.y < 0:
+            self.y = 0
+        if self.y > HEIGHT - 32:
+            self.y = HEIGHT - 32
 
     def draw(self):
         if self.direction == 1:
