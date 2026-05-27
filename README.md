@@ -57,7 +57,7 @@ pip install pgzero
 
 1. Clone o repositório:
 ```bash
-git clone https://github.com/seu-usuario/mushroom-revolt.git
+git clone https://github.com/raysonnunes/mushroom-revolt
 ```
 
 2. Acesse a pasta e execute o jogo:
